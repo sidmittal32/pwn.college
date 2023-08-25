@@ -86,22 +86,19 @@ mov ecx,[rdi+8]
 mov edx,[rdi+12]
 mov eax,[rdi]
 cmp eax,0x7f454c46
-je con1
-nop
+je down1
 mov eax,[rdi]
 cmp eax,0x00005A4D
-je con2
-nop
+je down2
 imul ebx,ecx
 imul ebx,edx
 jmp done
 nop
-con1:
+down1:
 add ebx,ecx
 add ebx,edx
 jmp done
-nop
-con2:
+down2:
 sub ebx,ecx
 sub ebx,edx
 done:
@@ -126,22 +123,18 @@ In [1]: import pwn
    ...: mov edx,[rdi+12]
    ...: mov eax,[rdi]
    ...: cmp eax,0x7f454c46
-   ...: je con1
-   ...: nop
+   ...: je down1
    ...: mov eax,[rdi]
    ...: cmp eax,0x00005A4D
-   ...: je con2
-   ...: nop
+   ...: je down2
    ...: imul ebx,ecx
    ...: imul ebx,edx
    ...: jmp done
-   ...: nop
-   ...: con1:
+   ...: down1:
    ...: add ebx,ecx
    ...: add ebx,edx
    ...: jmp done
-   ...: nop
-   ...: con2:
+   ...: down2:
    ...: sub ebx,ecx
    ...: sub ebx,edx
    ...: done:
